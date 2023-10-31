@@ -10,9 +10,11 @@ const REGISTER_USER = async (req, res) => {
     const user = new UserModel({
       name: req.body.name,
       email: req.body.email,
-      skills: req.body.skills,
+      skills: [],
       password: hash,
     });
+
+    user.id = user._id;
 
     const response = await user.save();
 
